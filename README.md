@@ -11,10 +11,10 @@ Google Analytics Helper, setup quickly and easy.
   $(document).ready(function () {
 
     // init
-    $(window).gaelf('create', 'UA-xxxxxxxx-1', 'auto');
+    $().gaelf('create', 'UA-xxxxxxxx-1', 'auto');
     
     // send pageview
-    $(window).gaelf('send', 'pageview', '/index.html');
+    $().gaelf('send', 'pageview', '/index.html');
 
     // bind on a tag click
     $('#a-tag-element').gaelf('send', 'pageview', '/register-btn');
