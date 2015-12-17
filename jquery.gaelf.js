@@ -69,21 +69,21 @@ jQuery.fn.gaelf = function (command) {
         var element = $(this);
         element.on('click touchstart', function (e) {
 
-          // ga callback
-          window.ga(gaParams[0], gaParams[1], {
-            hitCallback: function () {
-              window.location.href = element.attr('href');
-            },
-            page: gaParams[2]
-          });
-          e.preventDefault();
-
-          // force redirect after 2000ms
-          window.setTimeout(function () {
+          // check ga was loaded
+          if (window.ga.hasOwnProperty('loaded') && window.ga.loaded === true) {
+            // ga callback
+            window.ga(gaParams[0], gaParams[1], {
+              hitCallback: function () {
+                window.location.href = element.attr('href');
+              },
+              page: gaParams[2]
+            });
             window.location.href = element.attr('href');
-          }, 2000);
+            e.preventDefault();
+            return false;
+          }
 
-          return false;
+          return true;
         });
       }
     }
